@@ -1,0 +1,17 @@
+{
+  "name": "AzureZen",
+  "author": {
+    "name": "Mike Miller",
+    "email": "mike@levelsbeyond.com",
+    "url": "https://github.com/mmillerlevels"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "ticket_sidebar": "assets/iframe.html"
+    }
+  },
+  "version": "1.0",
+  "frameworkVersion": "2.0"
+}

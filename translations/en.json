@@ -1,0 +1,8 @@
+{
+  "app": {
+    "name": "AzureZen",
+    "short_description": "Integrate ticket info from Azure Devops",
+    "long_description": "Integrate ticket info from Azure Devops",
+    "installation_instructions": "Simply click install."
+  }
+}

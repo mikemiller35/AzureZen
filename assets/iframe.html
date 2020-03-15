@@ -1,0 +1,34 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zendeskgarden/css-bedrock@7.0" type="text/css">
+</head>
+<body>
+  <section data-main>Loading...</section>
+  <script type="text/javascript" src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+  <script>
+    var client = ZAFClient.init();
+
+    function renderText(text) {
+      var mainSectionEl = document.querySelector('section[data-main]');
+      mainSectionEl.innerText = text;
+    }
+
+    function getCurrentUser() {
+      return client.get('currentUser').then(function(data) {
+        return data['currentUser'];
+      });
+    }
+
+    function init() {
+      getCurrentUser().then(function(currentUser) {
+        renderText('Hi ' + currentUser.name + ', trying to link to Azure?');
+        });
+    }
+
+    client.on('app.registered', function() {
+      client.invoke('resize', { width: '100%', height: '80px' });
+      init();
+    });
+  </script>
+</body>
+</html>
