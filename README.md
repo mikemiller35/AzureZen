@@ -4,7 +4,7 @@ Find some more info [here](https://develop.zendesk.com/hc/en-us/articles/3600010
 
 ```
 $ gem install rake
-$ gem install rake
+$ gem install zendesk_apps_tools
 # Do this once in a while
 $ gem update zendesk_apps_tools
 ```
@@ -14,7 +14,7 @@ $ gem update zendesk_apps_tools
 Once you get this git repo cloned, can do some testing
 
 ```
-$ /usr/local/lib/ruby/gems/2.6.0/bin/zat server --path /Users/mike/Projects/azure_zendesk
+$ /usr/local/lib/ruby/gems/2.6.0/bin/zat server --path .
 == Sinatra (v1.4.8) has taken the stage on 4567 for development with backup from Thin
 Thin web server (v1.7.2 codename Bachmanity)
 Maximum connections set to 1024
