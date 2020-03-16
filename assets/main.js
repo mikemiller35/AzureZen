@@ -38,8 +38,29 @@ $(function() {
         getCurrentUser().then(function(currentUser) {
             renderText('Hi ' + currentUser.name + ', trying to link to Azure? \n');
         });
-        //azurecall();
+        azurecall();
     }
+
+    function getTicket() {
+        var token ="token";
+        var org = "org";
+        var base64Pat = btoa(":"+token);
+        var request = new XMLHttpRequest;
+        //var ticket = '63454';
+        var ticket = document.getElementById('Ticket').value;
+        console.log(ticket);
+        request.open("GET","https://dev.azure.com/"+ org + "/engineering/_apis/wit/workitems?ids=" + ticket + "&api-version=2.0", true);
+        var b = "Basic " + base64Pat;
+        request.setRequestHeader("Authorization", b);
+        
+        request.onload = function() {
+            var data = JSON.parse(JSON.stringify(this.response));
+            console.log(data);
+        }
+        request.send();
+    }
+    var button = document.getElementById('submit')
+    button.addEventListener('click', getTicket, false);
     
     client.on('app.registered', function() {
         client.invoke('resize', { width: '100%', height: '120px' });
