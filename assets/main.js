@@ -14,7 +14,10 @@ $(function() {
         request.onload = function() {
             var data = JSON.parse(JSON.stringify(this.response));
             console.log(data);
-            return data;
+            var obj = JSON.parse(this.response)
+            var mainSectionEl = document.querySelector('section[data-main]');
+            mainSectionEl.innerText = obj.value[1].name;
+            console.log(obj.value[1].name)
         }
         request.send();
     }
@@ -30,15 +33,16 @@ $(function() {
         });
     }
     
+    //This does a thing right now. Still needs lots of love
     function init() {
         getCurrentUser().then(function(currentUser) {
-            renderText('Hi ' + currentUser.name + ', trying to link to Azure? \n How will we get this working with JS :( ');
+            renderText('Hi ' + currentUser.name + ', trying to link to Azure? \n');
         });
         azurecall();
     }
     
     client.on('app.registered', function() {
-        client.invoke('resize', { width: '100%', height: '80px' });
+        client.invoke('resize', { width: '100%', height: '120px' });
         init();
     });
     
