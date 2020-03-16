@@ -38,7 +38,7 @@ $(function() {
         getCurrentUser().then(function(currentUser) {
             renderText('Hi ' + currentUser.name + ', trying to link to Azure? \n');
         });
-        azurecall();
+        //azurecall();
     }
     
     client.on('app.registered', function() {
