@@ -7,10 +7,22 @@
   <script src="https://cdn.jsdelivr.net/jquery/3.0.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <script type="text/javascript" src="main.js"></script>
-  <label for="name">Azure Ticket Number</label>
-
-<input type="text" id="Ticket" name="ticket" required minlength="4" maxlength="8" size="10">
-<button class="c-btn c-btn--primary" id="submit">Fetch Data</button>
+  
+  
+  <div id="User"></div>
+  <div id="Input" style="padding: 25px;">
+    <label for="name">Azure Ticket Number</label>
+    <input type="text" id="Ticket" name="ticket" required minlength="4" maxlength="8" size="10">
+    <button class="c-btn c-btn--primary" id="submit">Fetch Data</button>
+  </div>
+  <div id="LinkedTicket">
+    <p>Current Linked Azure</p>
+    <p id="CurrentLinkedInfo">Nothing linked!</p>
+    <div id="LinkedTicketData"></div>
+      <p id="LinkedTicketData">Azure Ticket Type</p>
+      <p id="azureData-Type"></p>
+  </div>
+</div>
 
 </body>
 </html>
