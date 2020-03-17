@@ -27,6 +27,7 @@ $(function() {
                 var mainSectionEl = document.getElementById('CurrentLinkedInfo');
                 mainSectionEl.innerText = aid;
                 getTicket(aid);
+                azurePatch(aid);
                 var x = document.getElementById("Input");
                 if (x.style.display === "none") {
                     x.style.display = "block";
@@ -69,7 +70,32 @@ $(function() {
         }
         request.send();
     }
-    
+
+    function azurePatch(aticket) {
+        return client.get('ticket.id').then(function(zid) {
+            var zticket = zid['ticket.id'];
+            console.log(zticket);
+            json = [
+                {
+                    "op": "add",
+                    "path": "/fields/Custom.ZenDeskTicketNumber",
+                    "value": zticket
+                }
+            ]
+            // Put request
+            var token ="TOKEN";
+            var org = "ORG";
+            var base64Pat = btoa(":"+token);
+            fetch("https://dev.azure.com/"+ org + "/engineering/_apis/wit/workitems/" + aticket + "/bypassRules=true&api-version=5.1", {
+            method: 'PATCH',
+            body: JSON.stringify(json),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": "Basic " + base64Pat
+            }
+        }).then(response => response.json()).then(json => console.log(json))
+    }
+    )}    
     //This does a thing right now. Still needs lots of love
     function init() {
         getCurrentUser().then(function(currentUser) {
