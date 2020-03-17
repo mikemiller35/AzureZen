@@ -23,7 +23,7 @@ $(function() {
         return client.get('ticket.customField:custom_field_360024830992').then(function(data) {
             var aid = data['ticket.customField:custom_field_360024830992'];
             console.log('Azure ID is ' + aid );
-            if (aid !== null && aid !== '0') {
+            if (aid !== null && aid !== '0' && aid !== '') {
                 var mainSectionEl = document.getElementById('CurrentLinkedInfo');
                 mainSectionEl.innerText = aid;
                 getTicket(aid);
@@ -45,6 +45,7 @@ $(function() {
     }
     // This gets the data from Azure
     // Need to work on getting more elements brought over. Only ticket type is done below for testing
+    // I only get tickets under engineering..I could see this becoming an issue
     function getTicket(ticket) {
         var token ="TOKEN";
         var org = "ORG";
@@ -65,12 +66,20 @@ $(function() {
         }
         request.send();
     }
-
+    
     //This does a thing right now. Still needs lots of love
     function init() {
         getCurrentUser().then(function(currentUser) {
             renderText('Hi ' + currentUser.name + ', trying to link to Azure? \n');
         });
+        
+        var button = document.getElementById('submit')
+        button.addEventListener('click', function(){
+            var ticket = document.getElementById('Ticket').value;
+            setAzureID(ticket);
+            window.location.reload(true);
+        });
+        
         azureID();
     }
     // Size the widget
@@ -80,10 +89,4 @@ $(function() {
     });
     // This is to add the Azure ticket to the Zen case
     // Will need another funtion to handle this and load the data
-    var button = document.getElementById('submit')
-    button.addEventListener('click', function(){
-        var ticket = document.getElementById('Ticket').value;
-        setAzureID(ticket);
-        getTicket(ticket);
-    });
 });
