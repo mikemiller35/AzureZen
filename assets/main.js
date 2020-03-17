@@ -60,8 +60,11 @@ $(function() {
             var data = JSON.parse(JSON.stringify(this.response));
             var obj = JSON.parse(this.response);
             var mainSectionEl = document.getElementById('azureData-Type');
-            //Prints ticket type
-            mainSectionEl.innerText = JSON.stringify(obj.value[0].fields["System.WorkItemType"]);
+            mainSectionEl.innerText = JSON.stringify(obj.value[0].fields["System.WorkItemType"]).replace(/['"]+/g, '');
+            var mainSectionEl1 = document.getElementById('azureData-Title');
+            mainSectionEl1.innerText = JSON.stringify(obj.value[0].fields["System.Title"]).replace(/['"]+/g, '');
+            var mainSectionEl2 = document.getElementById('azureData-Status');
+            mainSectionEl2.innerText = JSON.stringify(obj.value[0].fields["System.State"]).replace(/['"]+/g, '');
             console.log(data);
         }
         request.send();
@@ -87,6 +90,4 @@ $(function() {
         client.invoke('resize', { width: '100%', height: '250px' });
         init();
     });
-    // This is to add the Azure ticket to the Zen case
-    // Will need another funtion to handle this and load the data
 });

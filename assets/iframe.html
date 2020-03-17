@@ -1,6 +1,6 @@
 <html>
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zendeskgarden/css-bedrock@7.0" type="text/css">
+  <link href="//cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock,npm/@zendeskgarden/css-grid,npm/@zendeskgarden/css-buttons,npm/@zendeskgarden/css-forms,npm/@zendeskgarden/css-utilities" rel="stylesheet">
 </head>
 <body>
   <section data-main>Loading...</section>
@@ -8,20 +8,30 @@
   <script type="text/javascript" src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <script type="text/javascript" src="main.js"></script>
   
-  
+  <hr>
+
   <div id="User"></div>
   <div id="Input" style="padding: 25px;">
     <label for="name">Azure Ticket Number</label>
     <input type="text" id="Ticket" name="ticket" required minlength="4" maxlength="8" size="10">
-    <button class="c-btn c-btn--primary" id="submit">Fetch Data</button>
+    <button class="c-btn c-btn--sm c-btn--pill c-btn--primary" id="submit">Link 'Em</button>
     <p>Make sure to submit ticket to save link!</p>
   </div>
   <div id="LinkedTicket">
-    <p>Current Linked Azure</p>
+    <p style="font-weight:bold;">Current Linked Azure Ticket</p>
     <p id="CurrentLinkedInfo">Nothing linked!</p>
-    <div id="LinkedTicketData"></div>
-      <p id="LinkedTicketData">Azure Ticket Type</p>
+    <div>
+      <p style="font-weight:bold;">Title</p>
+      <p id="azureData-Title"></p>
+    </div>
+    <div>
+      <p style="font-weight:bold;">Azure Ticket Type</p>
       <p id="azureData-Type"></p>
+    </div>
+    <div>
+      <p style="font-weight:bold;">Ticket Status</p>
+      <p id="azureData-Status"></p>
+    </div>
   </div>
 </div>
 
