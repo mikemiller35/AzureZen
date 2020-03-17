@@ -12,6 +12,12 @@ $(function() {
             return data['currentUser'];
         });
     }
+    // Set AzureID in Zendesk
+    // User still must submit the case - This *doesn't* auto save
+    function setAzureID(ID) {
+        client.set('ticket.customField:custom_field_360024830992', ID);
+    }
+    
     // Let's get the current Azure ID Tied to this ticket
     function azureID() {
         return client.get('ticket.customField:custom_field_360024830992').then(function(data) {
@@ -77,6 +83,7 @@ $(function() {
     var button = document.getElementById('submit')
     button.addEventListener('click', function(){
         var ticket = document.getElementById('Ticket').value;
+        setAzureID(ticket);
         getTicket(ticket);
     });
 });
