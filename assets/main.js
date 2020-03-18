@@ -80,23 +80,31 @@ $(function () {
         return client.get('ticket.id').then(function (zid) {
             console.log("Im azurePatch..I stop after this...");
             var zticket = zid['ticket.id'];
-            zticket = '"' + zticket + '"';
+            zticket = '\"' + zticket;
             console.log(zticket);
-            var json = [
-                {
-                    "op": "add",
-                    "path": "/fields/Custom.ZenDeskTicketNumber",
-                    "value": zticket
-                }
-            ];
-            json = JSON.stringify(json);
+            // var json = [
+            //     {
+            //         "op": "add",
+            //         "path": "/fields/Custom.ZenDeskTicketNumber",
+            //         "value": zticket
+            //     }
+            // ];
+            // [ 
+            //     {
+            //       "op": "add",
+            //       "path": "/fields/Custom.ZenDeskTicketNumber",
+            //       "value": "Does This Work"
+            //     }
+            //   ]
+            var data = "[\n                {\n                    \"op\": \"add\",\n                    \"path\": \"/fields/Custom.ZenDeskTicketNumber\",\n                    \"value\": " + zticket + "\n                }\n            ]";
+            //json = JSON.stringify(json);
             // Put request
             let token = "TOKEN";
             let org = "ORG";
             let base64Pat = btoa(":" + token);
             let request = new XMLHttpRequest;
             console.log('Ticket data for ' + aticket);
-            request.open("PUT", "https://dev.azure.com/" + org + "/_apis/wit/workitems/" + aticket + "/?bypassRules=true&api-version=5.1", true);
+            request.open("PATCH", "https://dev.azure.com/" + org + "/_apis/wit/workitems/" + aticket + "/?bypassRules=true&api-version=5.1", true);
             let b = "Basic " + base64Pat;
             request.setRequestHeader("Authorization", b);
             request.setRequestHeader("Content-type", "application/json; charset=UTF-8");
