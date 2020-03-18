@@ -1,38 +1,39 @@
 <html>
 <head>
-  <link href="//cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock,npm/@zendeskgarden/css-grid,npm/@zendeskgarden/css-buttons,npm/@zendeskgarden/css-forms,npm/@zendeskgarden/css-utilities" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock,npm/@zendeskgarden/css-grid,npm/@zendeskgarden/css-buttons,npm/@zendeskgarden/css-forms,npm/@zendeskgarden/css-utilities"
+          rel="stylesheet">
 </head>
 <body>
-  <section data-main>Loading...</section>
-  <script src="https://cdn.jsdelivr.net/jquery/3.0.0/jquery.min.js"></script>
-  <script type="text/javascript" src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-  
-  <hr>
+<section data-main>Loading...</section>
+<script src="https://cdn.jsdelivr.net/jquery/3.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
 
-  <div id="User"></div>
-  <div id="Input" style="padding: 25px;">
+<hr>
+
+<div id="User"></div>
+<div id="Input" style="padding: 25px;">
     <label for="name">Azure Ticket Number</label>
     <input type="text" id="Ticket" name="ticket" required minlength="4" maxlength="8" size="10">
     <button class="c-btn c-btn--sm c-btn--pill c-btn--primary" id="submit">Link 'Em</button>
     <p>Make sure to submit ticket to save link!</p>
-  </div>
-  <div id="LinkedTicket">
+</div>
+<div id="LinkedTicket">
     <p style="font-weight:bold;">Current Linked Azure Ticket</p>
     <p id="CurrentLinkedInfo">Nothing linked!</p>
     <div>
-      <p style="font-weight:bold;">Title</p>
-      <p id="azureData-Title"></p>
+        <p style="font-weight:bold;">Title</p>
+        <p id="azureData-Title"></p>
     </div>
     <div>
-      <p style="font-weight:bold;">Azure Ticket Type</p>
-      <p id="azureData-Type"></p>
+        <p style="font-weight:bold;">Azure Ticket Type</p>
+        <p id="azureData-Type"></p>
     </div>
     <div>
-      <p style="font-weight:bold;">Ticket Status</p>
-      <p id="azureData-Status"></p>
+        <p style="font-weight:bold;">Ticket Status</p>
+        <p id="azureData-Status"></p>
     </div>
-  </div>
+</div>
 </div>
 
 </body>
